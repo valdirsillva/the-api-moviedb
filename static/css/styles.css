@@ -151,6 +151,23 @@ li > a:hover {
   text-decoration: none;
   cursor: pointer;
 }
+/* avaliacao */
+.content-image > span {
+    border: 3px solid #1eaa64;
+    background: #081c22;
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    border-radius: 50%;
+    align-items: center;
+    text-align: center;
+    color: white;
+    display: grid;
+    bottom: 7rem;
+    /* left: .75rem; */
+    left: 4.85rem;
+    font-weight: 900;
+}
 
 .content-stories {
   display: flex;

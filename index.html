@@ -37,27 +37,8 @@
 
 
     <div class="content" id="datalist">
-        <div class="content-image">
-            <img src="./static/image/rqeYMLryjcawh2JeRpCVUDXYM5b.jpg" alt=" ">
-            <div class="content-title"> Titulo filme</div>
-            <button type="button">
-                <a href='stories.php?id=1'>Detalhes</a>
-            </button>
-        </div>
-        <div class="content-image">
-            <img src="./static/image/rqeYMLryjcawh2JeRpCVUDXYM5b.jpg" alt=" ">
-            <div class="content-title"> Titulo filme</div>
-            <button type="button">
-                <a href='stories.php?id=1'>Detalhes</a>
-            </button>
-        </div>
-        <div class="content-image">
-            <img src="./static/image/rqeYMLryjcawh2JeRpCVUDXYM5b.jpg" alt=" ">
-            <div class="content-title"> Titulo filme</div>
-            <button type="button">
-                <a href='stories.php?id=1'>Detalhes</a>
-            </button>
-        </div>
+
+
     </div>
 
 
@@ -148,6 +129,19 @@
             Api();
         });
 
+        function render(data) {
+            let output = `
+            <div class="content-image">
+              <img src=https://image.tmdb.org/t/p/w500${data.poster_path} alt=" ">
+               <span>${data.vote_average}%</span>
+            <div class="content-title"> ${data.title} </div>
+              <button type="button">
+                <a href='stories.php?id=1'>Detalhes</a>
+              </button>
+           </div>`;
+            document.getElementById('datalist').innerHTML += output;
+        }
+
 
         async function getApiKey() {
 
@@ -157,14 +151,17 @@
             return apy_key;
         }
 
-
         async function Api() {
             const key = await getApiKey();
             const data = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}`);
 
-            const response = await data.json();
+            const allMoviesPopulation = await data.json();
+            allMoviesPopulation.results.map(movie => {
+                // console.log(movie.poster_path);
+                render(movie);
+            })
 
-            console.log(response);
+
         }
 
 
