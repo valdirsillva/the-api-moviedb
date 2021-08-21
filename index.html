@@ -62,9 +62,9 @@
 
 
     <section id="section-image">
+        <section class="overlay"></section>
         <div></div>
     </section>
-
 
 
     <div class="content-footer">
@@ -141,6 +141,37 @@
             </div>
         </footer>
     </div>
+
+
+    <script>
+        window.addEventListener('load', function () {
+            Api();
+        });
+
+
+        async function getApiKey() {
+
+            const json = await fetch('auth.json');
+            const { apy_key } = await json.json();
+
+            return apy_key;
+        }
+
+
+        async function Api() {
+            const key = await getApiKey();
+            const data = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}`);
+
+            const response = await data.json();
+
+            console.log(response);
+        }
+
+
+
+
+
+    </script>
 
 
 
