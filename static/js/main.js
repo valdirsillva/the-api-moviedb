@@ -1,6 +1,5 @@
 window.addEventListener('load', function () {
     Api();
-   
 
 });
 
@@ -36,19 +35,6 @@ async function Api() {
         render(movie);
     })
 }
-
-async function getDetailsFindMovie() {
-    const params = new URLSearchParams(window.location.search);
-    const findId = params.get('id');
-    const apikey = await getApiKey();
-    const getDetailsFindMovie = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apikey}`);
-
-    console.log(getDetailsFindMovie);
-}
-
-
-getDetailsFindMovie();
-
 
 
 

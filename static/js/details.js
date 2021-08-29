@@ -54,11 +54,21 @@ async function getDetailsFindMovie() {
 
     console.log(detailsMovie);
 
-    // renderDetailsFromMovie(detailsMovie);
+    renderDetailsFromMovie(detailsMovie);
 }
 
 
 function renderDetailsFromMovie(detailsMovie) {
+    let details = `<div class="overview">
+    <img src="https://image.tmdb.org/t/p/w400${detailsMovie.image}" alt="">
+    
+     <div class="overview-title">
+        <h3>${detailsMovie.title}</h3>
+        <span>${detailsMovie.overview}</span>
+     </div>
+   </div>`;
+
+   document.getElementById('details').innerHTML += details;
 
 }
 
