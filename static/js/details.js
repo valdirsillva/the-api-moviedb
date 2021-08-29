@@ -1,6 +1,5 @@
-window.addEventListener('load', function () {
-    Api();
-   
+window.addEventListener("load", function() {
+   getDetailsFindMovie();
 
 });
 
@@ -26,30 +25,41 @@ async function getApiKey() {
     return apy_key;
 }
 
-async function Api() {
-    const key = await getApiKey();
-    const data = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}`);
 
-    const allMoviesPopulation = await data.json();
-    allMoviesPopulation.results.map(movie => {
-        // console.log(movie.poster_path);      
-        render(movie);
-    })
-}
-
-async function getDetailsFindMovie() {
+async function getDetailsFindMovie() { 
     const params = new URLSearchParams(window.location.search);
     const findId = params.get('id');
     const apikey = await getApiKey();
-    const getDetailsFindMovie = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apikey}`);
 
-    console.log(getDetailsFindMovie);
+    const getDetailsFindMovie = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apikey}`);
+    const response = await getDetailsFindMovie.json();
+
+    let detailsMovie = {};
+
+    response.results.filter(movie => {
+        return movie.id === parseInt(findId);
+    }).forEach(movie => {
+
+        return detailsMovie = {
+           title: movie.title, 
+           overview: movie.overview,
+           image: movie.poster_path,
+           release: movie.release_date,
+           votes: movie.votes_count,
+           vote_average: movie.vote_average,
+           popularity: movie.popularity
+        };
+
+    })
+
+    console.log(detailsMovie);
+
+    // renderDetailsFromMovie(detailsMovie);
 }
 
 
-getDetailsFindMovie();
+function renderDetailsFromMovie(detailsMovie) {
 
-
-
+}
 
 
