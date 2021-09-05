@@ -1,7 +1,11 @@
-window.addEventListener('load', function () {
+
+
+window.addEventListener('load', function () {  
     Api();
 
 });
+
+
 
 function render(data) {
     let output = `
@@ -35,7 +39,5 @@ async function Api() {
         render(movie);
     })
 }
-
-
 
 
