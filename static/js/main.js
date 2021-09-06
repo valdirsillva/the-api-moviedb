@@ -1,11 +1,10 @@
 
 
 window.addEventListener('load', function () {  
-    Api();
+    getMoviePopular();
+
 
 });
-
-
 
 function render(data) {
     let output = `
@@ -29,15 +28,25 @@ async function getApiKey() {
     return apy_key;
 }
 
-async function Api() {
+async function getMoviePopular() {
     const key = await getApiKey();
-    const data = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}`);
+    const dataMoviesPopular = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}`);
 
-    const allMoviesPopulation = await data.json();
+    const allMoviesPopulation = await dataMoviesPopular.json();
     allMoviesPopulation.results.map(movie => {
         // console.log(movie.poster_path);      
         render(movie);
     })
 }
+
+async function getMovieNowPlaing() {
+    const dataMoviesNowPlaying = await  fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}`);
+    const allMoviesNowPlaying = await dataMoviesNowPlaying.json();
+    allMoviesNowPlaying.results.map(movie => {
+
+         render(movie);
+    });
+}
+
 
 
