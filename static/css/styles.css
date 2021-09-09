@@ -289,6 +289,31 @@ h1 > button {
   border-radius: 0.75rem;
 }
 
+.btn-view-trailler {
+  width: 20px 20px;
+  width: 85px;
+
+  padding: 12px 10px;
+  display: block;
+  margin-top: 80px;
+  float: right;
+  background: #c39615;
+  border: 0;
+  color: white;
+  border-radius: 1.2rem;
+}
+
+.movie-trailer {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  justify-content: center;
+
+  z-index: 1;
+
+  padding: 10px;
+}
+
 .content-footer {
   margin-top: 10rem;
 }

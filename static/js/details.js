@@ -65,11 +65,17 @@ function renderDetailsFromMovie(detailsMovie) {
      <div class="overview-title">
         <h3>${detailsMovie.title}</h3>
         <span>${detailsMovie.overview}</span>
+        <br>
+         
+        <button type="button" class="btn-view-trailler">Trailler</button>
+        
      </div>
    </div>`;
 
    document.getElementById('details').innerHTML += details;
 
 }
+
+
 
 
