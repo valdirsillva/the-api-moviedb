@@ -74,19 +74,25 @@ function renderDetailsFromMovie(detailsMovie) {
        
      </div>
    `;
+   
+
 
 
    document.getElementById('details').innerHTML += details;
 
+   
+   if (true) {
+    renderTrailerFromMovieId(detailsMovie);
+    return;
+
+  }
+
 }
 
-async function renderTrailerFromMovieId() {
-
-    const movie = new URLSearchParams(window.location.search);
-    const id = movie.get('id');
+async function renderTrailerFromMovieId(details) {
   
     const api_key = await getApiKey();
-    const getTrailerFromMovie = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${api_key}`);
+    const getTrailerFromMovie = await fetch(`https://api.themoviedb.org/3/movie/${details.id}/videos?api_key=${api_key}`);
     const res = await getTrailerFromMovie.json();
 
     const currenTrailer = res.results.map(trailer => {
@@ -103,11 +109,8 @@ async function renderTrailerFromMovieId() {
     console.log(currenTrailer);
 
     document.getElementById('trailer').innerHTML = currenTrailer;
-
-
-
-
 }
+
 
 
 // https://api.themoviedb.org/3/movie/619297/videos?api_key=2f354278de8f017620d19e5f7c0d0253&language=en-US
