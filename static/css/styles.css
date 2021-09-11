@@ -301,10 +301,12 @@ h1 > button {
   border: 0;
   color: white;
   border-radius: 1.2rem;
+
+  cursor: pointer;
 }
 
 .movie-trailer {
-  display: flex;
+  display: none;
   position: absolute;
   width: 100%;
   justify-content: center;
@@ -315,6 +317,10 @@ h1 > button {
   align-items: center;
   margin-left: auto;
   margin-right: auto;
+}
+
+.active {
+  display: flex;
 }
 
 .close-trailer > img {

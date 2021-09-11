@@ -10,18 +10,17 @@ window.addEventListener("DOMContentLoaded", function() {
         clickButtonOpen.addEventListener('click', showModalTrailer);
         clickButtonClose.addEventListener('click', hideModalTrailer);
 
-        
-   }, 2000);
-
-
-  
-    function showModalTrailer() {
-        // implementacao p/ abrir modal 
-    }
-
-    function hideModalTrailer() {
-       // implementacao p/ fechar modal 
-    }
+        function showModalTrailer() {
+            // implementacao p/ abrir modal            
+            container.classList.add('active');
+        }
+    
+        function hideModalTrailer() {
+            // implementacao p/ fechar modal
+            container.classList.remove('active'); 
+        }
+    
+    }, 1000);
 
 });
 
