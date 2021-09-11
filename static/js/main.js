@@ -1,15 +1,12 @@
 
-
-
-
 window.addEventListener('DOMContentLoaded', function () {  
     
     let url = new URLSearchParams(window.location.search);
     let sufix = url.get('page');
-    
     // Converto p/ caixa miniscula
     sufix = sufix.toLocaleLowerCase();
-
+    
+     
     switch(sufix) {
         case 'popular':
             getMoviePopular();
@@ -20,24 +17,20 @@ window.addEventListener('DOMContentLoaded', function () {
 
     }
 
-
-
-
 });
 
 function render(data) {
     let output = `
-    <div class="content-image">
-      <img src=https://image.tmdb.org/t/p/w500${data.poster_path} alt=" ">
-       <span>${data.vote_average}%</span>
-    <div class="content-title"> ${data.title} </div>
-      <button type="button" id="add_${data.id}">
-        <a href='details.html?id=${data.id}'>Detalhes</a>
-      </button>
-   </div>`;
+      <div class="content-image">
+        <img src=https://image.tmdb.org/t/p/w500${data.poster_path} alt=" ">
+        <span>${data.vote_average}%</span>
+        <div class="content-title"> ${data.title} </div>
+          <button type="button" id="add_${data.id}">
+            <a href='details.html?id=${data.id}'>Detalhes</a>
+          </button>
+      </div>`;
     document.getElementById('datalist').innerHTML += output;
 }
-
 
 async  function getApiKey() {
 
@@ -46,8 +39,6 @@ async  function getApiKey() {
 
     return  apy_key;
 }
-
-
 
 async function getMoviePopular() {
 

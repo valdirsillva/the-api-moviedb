@@ -1,5 +1,27 @@
-window.addEventListener("load", function() {
+window.addEventListener("DOMContentLoaded", function() {
    getDetailsFindMovie();
+
+   setTimeout(function() {
+        const container = document.getElementById('trailer');
+
+        const clickButtonOpen  = document.querySelector('.open-trailer');
+        const clickButtonClose = document.querySelector('.close');
+
+        clickButtonOpen.addEventListener('click', showModalTrailer);
+        clickButtonClose.addEventListener('click', hideModalTrailer);
+
+        
+   }, 2000);
+
+
+  
+    function showModalTrailer() {
+        // implementacao p/ abrir modal 
+    }
+
+    function hideModalTrailer() {
+       // implementacao p/ fechar modal 
+    }
 
 });
 
@@ -51,15 +73,16 @@ async function getDetailsFindMovie() {
            popularity: movie.popularity
         };
 
-    })
-
-    // console.log(detailsMovie);
-
+    });
     renderDetailsFromMovie(detailsMovie);
 }
 
 
 function renderDetailsFromMovie(detailsMovie) {
+    renderTrailerFromMovieId(detailsMovie);
+
+
+    console.log('conteudo carregado');
     let details = `<div class="overview">
     <img src="https://image.tmdb.org/t/p/w400${detailsMovie.image}" alt="">
     
@@ -67,26 +90,15 @@ function renderDetailsFromMovie(detailsMovie) {
         <h3>${detailsMovie.title}</h3>
         <span>${detailsMovie.overview}</span>
         <br>
-        <button type="button" class="btn-view-trailler open">Trailler</button>
+        <button type="button" class="btn-view-trailler open-trailer">Trailler</button>
      </div>
-
      <div class="movie-trailer" id="trailer">
-       
-     </div>
-   `;
-   
 
 
-
+     </div>`;
    document.getElementById('details').innerHTML += details;
 
-   
-   if (true) {
-    renderTrailerFromMovieId(detailsMovie);
-    return;
-
-  }
-
+  
 }
 
 async function renderTrailerFromMovieId(details) {
@@ -94,25 +106,19 @@ async function renderTrailerFromMovieId(details) {
     const api_key = await getApiKey();
     const getTrailerFromMovie = await fetch(`https://api.themoviedb.org/3/movie/${details.id}/videos?api_key=${api_key}`);
     const res = await getTrailerFromMovie.json();
+    
+    // pego apenas o trailer na posição 0
+    let trailer = res.results[0].key;
 
-    const currenTrailer = res.results.map(trailer => {
-     return `
-        <div class="close-trailer"
-            <img src="static/image/close.png" alt="" class="close">
-        </div>
-        <iframe width="720" height="415" src=https://www.youtube.com/embed/${trailer.key}
+    let currenTrailer =`
+          <div class="close-trailer">
+             <img src="static/image/close.png" alt="" class="close">
+          </div>
+    
+        <iframe width="720" height="530" src=https://www.youtube.com/embed/${trailer}
            title="YouTube video player" 
            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-         </iframe>`;
-    });
-
-    console.log(currenTrailer);
-
+        </iframe>`;
+ 
     document.getElementById('trailer').innerHTML = currenTrailer;
 }
-
-
-
-// https://api.themoviedb.org/3/movie/619297/videos?api_key=2f354278de8f017620d19e5f7c0d0253&language=en-US
-
-
