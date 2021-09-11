@@ -317,6 +317,15 @@ h1 > button {
   margin-right: auto;
 }
 
+.close-trailer > img {
+  position: absolute;
+  top: 4rem;
+  right: 8rem;
+  width: 42px;
+
+  cursor: pointer;
+}
+
 .content-footer {
   /* margin-top: 10rem; */
 

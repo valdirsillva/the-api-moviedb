@@ -41,6 +41,7 @@ async function getDetailsFindMovie() {
     }).forEach(movie => {
 
         return detailsMovie = {
+           id: movie.id, 
            title: movie.title, 
            overview: movie.overview,
            image: movie.poster_path,
@@ -52,7 +53,7 @@ async function getDetailsFindMovie() {
 
     })
 
-    console.log(detailsMovie);
+    // console.log(detailsMovie);
 
     renderDetailsFromMovie(detailsMovie);
 }
@@ -66,13 +67,45 @@ function renderDetailsFromMovie(detailsMovie) {
         <h3>${detailsMovie.title}</h3>
         <span>${detailsMovie.overview}</span>
         <br>
-         
-        <button type="button" class="btn-view-trailler">Trailler</button>
-        
+        <button type="button" class="btn-view-trailler open">Trailler</button>
      </div>
-   </div>`;
+
+     <div class="movie-trailer" id="trailer">
+       
+     </div>
+   `;
+
 
    document.getElementById('details').innerHTML += details;
+
+}
+
+async function renderTrailerFromMovieId() {
+
+    const movie = new URLSearchParams(window.location.search);
+    const id = movie.get('id');
+  
+    const api_key = await getApiKey();
+    const getTrailerFromMovie = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${api_key}`);
+    const res = await getTrailerFromMovie.json();
+
+    const currenTrailer = res.results.map(trailer => {
+     return `
+        <div class="close-trailer"
+            <img src="static/image/close.png" alt="" class="close">
+        </div>
+        <iframe width="720" height="415" src=https://www.youtube.com/embed/${trailer.key}
+           title="YouTube video player" 
+           frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+         </iframe>`;
+    });
+
+    console.log(currenTrailer);
+
+    document.getElementById('trailer').innerHTML = currenTrailer;
+
+
+
 
 }
 
