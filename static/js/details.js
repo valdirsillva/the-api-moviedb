@@ -116,7 +116,7 @@ async function renderTrailerFromMovieId(details) {
     
         <iframe width="720" height="530" src=https://www.youtube.com/embed/${trailer}
            title="YouTube video player" 
-           frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+           frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
         </iframe>`;
  
     document.getElementById('trailer').innerHTML = currenTrailer;
