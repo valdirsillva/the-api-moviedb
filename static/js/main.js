@@ -13,7 +13,10 @@ window.addEventListener('DOMContentLoaded', function () {
           break;
         case 'nowplaying':
             getMovieNowPlaing();
-          break;  
+          break; 
+        case 'upcoming':
+            getMovieUpcoming();
+          break;    
 
     }
 
@@ -61,5 +64,19 @@ async function getMovieNowPlaing() {
     });
 }
 
+
+async function getMovieUpcoming() {
+    const chave = await getApiKey();
+
+    const dataMovieUpcoming = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${chave}`);
+    const allUpcoming = await dataMovieUpcoming.json();
+
+
+    console.log(allUpcoming);
+
+    allUpcoming.results.map(movie => {
+       render(movie);
+    });
+}
 
 
