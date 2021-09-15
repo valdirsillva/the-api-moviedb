@@ -39,7 +39,7 @@ header > ul {
   left: 15rem;
 }
 
-ul > li {
+header ul > li {
   display: inline-flex;
   flex-direction: row;
   justify-content: space-around;
@@ -84,14 +84,19 @@ li > a:hover,
 }
 
 .dropdown-menu.activate {
-  /* width: 200px;
-  height: 200px;
-  top: 1rem; */
-  display: block;
+  display: flex;
+  align-items: flex-start;
+  padding: 3rem 0;
+
+  /* width: 100%; */
 }
 
 .dropdown-menu.disable > li > a {
   display: none;
+}
+
+.dropdown-menu li a:hover {
+  /* background: #12937e; */
 }
 
 .flex-top-banner {
