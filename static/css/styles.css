@@ -161,6 +161,8 @@ aside > h2 {
   margin: 0.5rem 0rem;
   border: 1px solid #e6dada;
   box-shadow: 4px 10px 16px 0px rgb(0 0 0 / 30%);
+
+  border-radius: 3%;
 }
 
 .content-image > .content-title {
@@ -209,6 +211,14 @@ aside > h2 {
   bottom: 7rem;
   left: 4.85rem;
   font-weight: 900;
+}
+
+.content-image > img {
+  transition: transform 250ms;
+}
+
+.content-image img:hover {
+  transform: translateY(-10px);
 }
 
 .content-stories {
