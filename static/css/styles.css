@@ -60,7 +60,6 @@ li > a {
 li > a:hover,
 .dropdown-menu > li > a:hover {
   color: #ec1d24;
-  /* border-bottom: 2px solid white; */
 }
 
 .dropdown-menu {
@@ -87,8 +86,6 @@ li > a:hover,
   display: flex;
   align-items: flex-start;
   padding: 3rem 0;
-
-  /* width: 100%; */
 }
 
 .dropdown-menu.disable > li > a {
@@ -265,14 +262,33 @@ aside > h2 {
   width: 60%;
 }
 
+.overview-title span {
+  padding: 2rem 0;
+}
+
 h3 {
   position: relative;
-  /* top: 45%;
-  left: 7%; */
-  color: white;
-
-  font-size: 3rem;
+  font-size: 2.2rem;
   font-family: "Roboto Medium", sans-serif;
+  margin-top: 5rem;
+}
+
+.movie-details {
+  display: block;
+  margin: 3.3rem 0;
+
+  flex-direction: row;
+}
+
+.movie-details > span {
+  margin: 1rem 0;
+}
+
+.overview-title > p {
+  margin-bottom: 0.7rem;
+  color: #c39615;
+  font-weight: 500;
+  font-size: 1.4rem;
 }
 
 h1 > button {
@@ -321,17 +337,6 @@ h1 > button {
 }
 
 .movie-trailer {
-  /* display: none;
-  position: absolute;
-  width: 100%;
-  justify-content: center;
-  z-index: 1;
-  padding: 10px;
-  height: 800px;
-  background: #272727;
-  align-items: center;
-  margin-left: auto;
-  margin-right: auto; */
   display: none;
   position: absolute;
   width: 100%;

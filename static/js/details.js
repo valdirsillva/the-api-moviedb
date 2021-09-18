@@ -80,13 +80,19 @@ async function getDetailsFindMovie() {
 function renderDetailsFromMovie(detailsMovie) {
     renderTrailerFromMovieId(detailsMovie);
 
-
-    console.log('conteudo carregado');
     let details = `<div class="overview">
     <img src="https://image.tmdb.org/t/p/w400${detailsMovie.image}" alt="">
     
      <div class="overview-title">
-        <h3>${detailsMovie.title}</h3>
+        <h3>${detailsMovie.title} </h3>
+        <small>${formatDate(detailsMovie.release)}</small>
+         <div class="movie-details"> 
+            <span>Avaliação do filme: ${detailsMovie.vote_average} </span>
+            <span>Votos: ${detailsMovie.votes ?? ''} </span>
+         </div>
+        
+      
+        <p>Sinopse</p>
         <span>${detailsMovie.overview}</span>
         <br>
         <button type="button" class="btn-view-trailler open-trailer">Trailler</button>
@@ -98,6 +104,12 @@ function renderDetailsFromMovie(detailsMovie) {
    document.getElementById('details').innerHTML += details;
 
   
+}
+
+function formatDate(data) {
+    let getDate = data.split('-');
+    
+    return `${getDate[2]}-${getDate[1]}-${getDate[0]}`;
 }
 
 async function renderTrailerFromMovieId(details) {
