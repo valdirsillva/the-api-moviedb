@@ -89,6 +89,7 @@ function renderDetailsFromMovie(detailsMovie) {
          <div class="movie-details"> 
             <span>Avaliação do filme: ${detailsMovie.vote_average} </span>
             <span>Votos: ${detailsMovie.votes ?? ''} </span>
+            <span>Popularidade: ${detailsMovie.popularity ?? ''} </span>
          </div>
         
       
