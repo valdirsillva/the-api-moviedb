@@ -46,7 +46,7 @@ async  function getApiKey() {
 async function getMoviePopular() {
 
     const key = await getApiKey();
-    const dataMoviesPopular = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}`);
+    const dataMoviesPopular = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=pt-BR`);
 
     const allMoviesPopulation = await dataMoviesPopular.json();
     allMoviesPopulation.results.map(movie => {
@@ -57,7 +57,7 @@ async function getMoviePopular() {
 async function getMovieNowPlaing() {
     const key = await getApiKey();
 
-    const dataMoviesNowPlaying = await  fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}`);
+    const dataMoviesNowPlaying = await  fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=pt-BR`);
     const allMoviesNowPlaying = await dataMoviesNowPlaying.json();
     allMoviesNowPlaying.results.map(movie => {
          render(movie);
@@ -68,7 +68,7 @@ async function getMovieNowPlaing() {
 async function getMovieUpcoming() {
     const chave = await getApiKey();
 
-    const dataMovieUpcoming = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${chave}`);
+    const dataMovieUpcoming = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${chave}&language=pt-BR`);
     const allUpcoming = await dataMovieUpcoming.json();
 
 
@@ -78,5 +78,8 @@ async function getMovieUpcoming() {
        render(movie);
     });
 }
+
+
+
 
 

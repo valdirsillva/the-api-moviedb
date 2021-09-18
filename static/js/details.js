@@ -52,7 +52,7 @@ async function getDetailsFindMovie() {
     const findId = params.get('id');
     const apikey = await getApiKey();
 
-    const getDetailsFindMovie = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apikey}`);
+    const getDetailsFindMovie = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apikey}&language=pt-BR`);
     const response = await getDetailsFindMovie.json();
 
     let detailsMovie = {};
@@ -103,7 +103,7 @@ function renderDetailsFromMovie(detailsMovie) {
 async function renderTrailerFromMovieId(details) {
   
     const api_key = await getApiKey();
-    const getTrailerFromMovie = await fetch(`https://api.themoviedb.org/3/movie/${details.id}/videos?api_key=${api_key}`);
+    const getTrailerFromMovie = await fetch(`https://api.themoviedb.org/3/movie/${details.id}/videos?api_key=${api_key}&language=pt-BR`);
     const res = await getTrailerFromMovie.json();
     
     // pego apenas o trailer na posição 0
